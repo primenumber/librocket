@@ -130,6 +130,7 @@ int rocket_bo_prep(struct rocket_ctx *ctx, struct rocket_bo *bo, int64_t timeout
 {
     struct drm_rocket_prep_bo prep = {
         .handle = bo->handle,
+        .reserved = 0,
         .timeout_ns = timeout_ns,
     };
     int ret;
@@ -146,6 +147,7 @@ int rocket_bo_fini(struct rocket_ctx *ctx, struct rocket_bo *bo)
 {
     struct drm_rocket_fini_bo fini = {
         .handle = bo->handle,
+        .reserved = 0,
     };
     int ret;
 
@@ -208,6 +210,7 @@ int rocket_submit(struct rocket_ctx *ctx,
         .jobs = (uintptr_t)&job,
         .job_count = 1,
         .job_struct_size = sizeof(struct drm_rocket_job),
+        .reserved = 0,
     };
 
     ret = ioctl(ctx->fd, DRM_IOCTL_ROCKET_SUBMIT, &submit);
