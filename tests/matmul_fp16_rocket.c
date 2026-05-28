@@ -196,7 +196,7 @@ int main(int argc, char **argv)
     float *output_data = (float *)output_bo.map;
     int errors = 0;
     for (int m = 1; m <= M; m++) {
-        for (int n = 1; n < N; n++) {
+        for (int n = 1; n <= N; n++) {
             float actual = output_data[feature_data(N, M, 1, 4, n, m, 1)];
             float expected = expected_result[((m-1)*N) + (n-1)];
             if (actual != expected) {
