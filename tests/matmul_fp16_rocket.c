@@ -185,7 +185,7 @@ int main(int argc, char **argv)
     printf("NPU job submitted\n");
 
     /* Wait for result and sync back */
-    ret = rocket_bo_prep(&ctx, &output_bo, 5000000000LL);  /* 5 second timeout */
+    ret = rocket_bo_prep(&ctx, &output_bo, INT64_MAX);  /* no timeout */
     if (ret < 0) {
         printf("rocket_bo_prep (wait) failed: %d\n", ret);
         goto err_free_output;
